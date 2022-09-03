@@ -1,0 +1,9 @@
+name: wait_group
+version: 0.1.0
+
+authors:
+  - Aleksandr Marchenko <axvmindaweb@gmail.com>
+
+crystal: 1.5.0
+
+license: MIT

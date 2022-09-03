@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug spec",
+      "type": "lldb",
+      "request": "launch",
+      "program": "tmp/${fileBasenameNoExtension}",
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": "Compile current file"
+    },
+  ]
+}

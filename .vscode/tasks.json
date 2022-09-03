@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run specs",
+      "command": "crystal spec --debug spec/**/*.cr",
+      "type": "shell",
+      "group": "test"
+    }
+  ]
+}
