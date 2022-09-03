@@ -5,18 +5,26 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+  - cron: "0 2 * * *"
 
 jobs:
   build:
-
+    strategy:
+      fail-fast: false
+      matrix:
+        crystal: [latest, nightly]
+    
     runs-on: ubuntu-latest
 
-    container:
-      image: crystallang/crystal
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+      - name: Download source
+        uses: actions/checkout@v3
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{ matrix.crystal }}
+      - name: Install dependencies
+        run: shards install
+      - name: Run tests
+        run: crystal spec          
