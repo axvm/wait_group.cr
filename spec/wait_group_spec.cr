@@ -13,4 +13,17 @@ describe WaitGroup do
     wg.wait
     true.should eq(true)
   end
+
+  it "another check" do
+    wg = WaitGroup.new
+
+    spawn do
+      wg.add(5)
+      sleep(rand(0.1..1.5))
+      wg.done(5)
+    end
+
+    wg.wait
+    true.should eq(true)
+  end
 end
