@@ -1,6 +1,6 @@
 # wait_groups
 
-TODO: Write a description here
+Simplest implementation of golang's wait groups
 
 ## Installation
 
@@ -9,7 +9,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      wait_groups:
-       github: your-github-user/wait_groups
+       github: axvm/wait_group.cr
    ```
 
 2. Run `shards install`
@@ -17,18 +17,27 @@ TODO: Write a description here
 ## Usage
 
 ```crystal
-require "wait_groups"
-```
+require "wait_group"
 
-TODO: Write usage instructions here
+wg = WaitGroup.new
+
+wg.add
+
+spawn do
+  sleep(5)
+  wg.done
+end
+
+wg.wait # and your main fiber will be released once wg.done will be called
+```
 
 ## Development
 
-TODO: Write development instructions here
+Do whatever you want
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/wait_groups/fork>)
+1. Fork it (<https://github.com/axvm/wait_group.cr>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +45,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [your-name-here](https://github.com/your-github-user) - creator and maintainer
+- [Aleksandr Marchenko](https://github.com/axvm) - creator and maintainer
